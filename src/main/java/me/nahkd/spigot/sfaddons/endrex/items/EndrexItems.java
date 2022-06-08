@@ -100,14 +100,15 @@ public class EndrexItems {
 		// Other stuffs
 		EnhancedElectricCrucible.addRecipe(ENDER_PEARL_ORE.getItem(), Liquids.RESONANT_ENDER, 1000);
 		EnhancedElectricCrucible.addRecipe(new ItemStack(Material.ENDER_PEARL), Liquids.RESONANT_ENDER, 200); // Better to smelt ore!
-		EnhancedElectricCrucible.addRecipe(new ItemStack(Material.CHORUS_FRUIT), Liquids.MYSTHERIUM, 100);
+		EnhancedElectricCrucible.addRecipe(new ItemStack(Material.CHORUS_FRUIT), Liquids.MYSTHERIUM, 150);
 		EnhancedElectricCrucible.addRecipe(new ItemStack(Material.COBBLESTONE), Liquids.WATER, 100);
+		EnhancedElectricCrucible.addRecipe(new ItemStack(Material.END_STONE), Liquids.LAVA, 75);
 		EnhancedElectricCrucible.addRecipe(new ItemStack(Material.STONE), Liquids.LAVA, 75);
 		EnhancedElectricCrucible.addRecipe(new ItemStack(Material.BLAZE_ROD), Liquids.LAVA, 100);
 		EnhancedElectricCrucible.addRecipe(new ItemStack(Material.BLAZE_POWDER), Liquids.LAVA, 50);
 		
 		DustsFabricator.addRecipe(Liquids.RESONANT_ENDER, 500, RESONANT_ENDER_DUST.getItem());
-		DustsFabricator.addRecipe(Liquids.MYSTHERIUM, 2000, MYSTHERIUM.getItem());
+		DustsFabricator.addRecipe(Liquids.MYSTHERIUM, 3000, MYSTHERIUM.getItem());
 	}
 	
 	private static void initCrucibles(Endrex plugin) {
