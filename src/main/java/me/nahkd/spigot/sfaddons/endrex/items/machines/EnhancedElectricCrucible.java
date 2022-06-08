@@ -225,10 +225,10 @@ public class EnhancedElectricCrucible extends EndrexItem implements EnergyNetCom
 	private static final int[] BGINPUTSLOTS = {0, 1, 2, 9, 11, 18, 19, 20};
 	private static final int[] BGINFOSLOTS = {3, 4, 5, 12, 14, 21, 22, 23};
 	private static final int[] BGOUTPUTSLOTS = {6, 7, 8, 15, 17, 24, 25, 26};
-	private static final CustomItemStack GUI_INPUT = new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&aInput");
-	private static final CustomItemStack GUI_OUTPUT = new CustomItemStack(Material.LIGHT_BLUE_STAINED_GLASS_PANE, "&bOutput");
-	private static final CustomItemStack GUI_WAIT = new CustomItemStack(Material.YELLOW_STAINED_GLASS_PANE, "&ePlease wait", "&7Maybe about 0.25s");
-	private static final CustomItemStack GUI_NOLIQUID = new CustomItemStack(Material.BARRIER, "&cNo Liquid", "&7Nope, nothing :shrug:");
+	private static final CustomItemStack GUI_INPUT = new CustomItemStack(Material.LIME_STAINED_GLASS_PANE, "&a输入");
+	private static final CustomItemStack GUI_OUTPUT = new CustomItemStack(Material.LIGHT_BLUE_STAINED_GLASS_PANE, "&b输出");
+	private static final CustomItemStack GUI_WAIT = new CustomItemStack(Material.YELLOW_STAINED_GLASS_PANE, "&e请等待", "&7大约0.25秒");
+	private static final CustomItemStack GUI_NOLIQUID = new CustomItemStack(Material.BARRIER, "&c无液体", "&7不，没什么：耸耸肩:");
 	private void menuPreset(BlockMenuPreset preset) {
 		// preset.setSize(27); // dafuq this cause error tho
 		for (int s : BGINPUTSLOTS) preset.addItem(s, GUI_INPUT, ChestMenuUtils.getEmptyClickHandler());
