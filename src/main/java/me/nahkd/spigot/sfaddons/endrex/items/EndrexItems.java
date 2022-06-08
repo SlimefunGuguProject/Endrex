@@ -90,7 +90,7 @@ public class EndrexItems {
 		initDustsFarbicators(plugin);
 		
 		// Weapons
-		CATEGORY_WEAPONS_AND_EQUIPMENTS = new ItemGroup(new NamespacedKey(plugin, "weapons_n_equipments"), new CustomItemStack(Material.DIAMOND_SWORD, "&eEndrex &7- &b兵器 and 装备"));
+		CATEGORY_WEAPONS_AND_EQUIPMENTS = new ItemGroup(new NamespacedKey(plugin, "weapons_n_equipments"), new CustomItemStack(Material.DIAMOND_SWORD, "&eEndrex &7- &b武器和护甲"));
 		initWeapons(plugin);
 		initEquipments(plugin);
 		
@@ -100,12 +100,14 @@ public class EndrexItems {
 		// Other stuffs
 		EnhancedElectricCrucible.addRecipe(ENDER_PEARL_ORE.getItem(), Liquids.RESONANT_ENDER, 1000);
 		EnhancedElectricCrucible.addRecipe(new ItemStack(Material.ENDER_PEARL), Liquids.RESONANT_ENDER, 200); // Better to smelt ore!
-		EnhancedElectricCrucible.addRecipe(new ItemStack(Material.COBBLESTONE), Liquids.LAVA, 65);
+		EnhancedElectricCrucible.addRecipe(new ItemStack(Material.CHORUS_FRUIT), Liquids.MYSTHERIUM, 100);
+		EnhancedElectricCrucible.addRecipe(new ItemStack(Material.COBBLESTONE), Liquids.WATER, 100);
 		EnhancedElectricCrucible.addRecipe(new ItemStack(Material.STONE), Liquids.LAVA, 75);
 		EnhancedElectricCrucible.addRecipe(new ItemStack(Material.BLAZE_ROD), Liquids.LAVA, 100);
 		EnhancedElectricCrucible.addRecipe(new ItemStack(Material.BLAZE_POWDER), Liquids.LAVA, 50);
 		
 		DustsFabricator.addRecipe(Liquids.RESONANT_ENDER, 500, RESONANT_ENDER_DUST.getItem());
+		DustsFabricator.addRecipe(Liquids.MYSTHERIUM, 2000, MYSTHERIUM.getItem());
 	}
 	
 	private static void initCrucibles(Endrex plugin) {
@@ -115,7 +117,7 @@ public class EndrexItems {
 		ENHANCED_ELECTRIC_CRUCIBLE_1 = new EnhancedElectricCrucible(CATEGORY_MACHINES, new SlimefunItemStack(
 				"ENHANCED_CRUCIBLE_1",
 				PlayerHead.getItemStack(EndrexSkulls.ENHANCED_CRUCIBLE_EMPTY),
-				"&eEnhanced Electric Crucible",
+				"&e增强型末影电坩埚",
 				"",
 				LoreBuilder.machine(MachineTier.BASIC, MachineType.MACHINE),
 				LoreBuilder.speed(1),
@@ -131,7 +133,7 @@ public class EndrexItems {
 		ENHANCED_ELECTRIC_CRUCIBLE_2 = new EnhancedElectricCrucible(CATEGORY_MACHINES, new SlimefunItemStack(
 				"ENHANCED_CRUCIBLE_2",
 				PlayerHead.getItemStack(EndrexSkulls.ENHANCED_CRUCIBLE_EMPTY),
-				"&eEnhanced Electric Crucible &7- &eII",
+				"&e增强型末影电坩埚 &7- &eII",
 				"",
 				LoreBuilder.machine(MachineTier.BASIC, MachineType.MACHINE),
 				LoreBuilder.speed(2),
@@ -149,7 +151,7 @@ public class EndrexItems {
 		DUSTS_FABRICATOR_1 = new DustsFabricator(CATEGORY_MACHINES, new SlimefunItemStack(
 				"DUSTS_FABRICATOR_1",
 				PlayerHead.getItemStack(EndrexSkulls.DUSTS_FABRICATOR),
-				"&bDusts Fabricator",
+				"&b粉尘塑形机",
 				"",
 				LoreBuilder.machine(MachineTier.BASIC, MachineType.MACHINE),
 				LoreBuilder.speed(1),
@@ -165,7 +167,7 @@ public class EndrexItems {
 		DUSTS_FABRICATOR_2 = new DustsFabricator(CATEGORY_MACHINES, new SlimefunItemStack(
 				"DUSTS_FABRICATOR_2",
 				PlayerHead.getItemStack(EndrexSkulls.DUSTS_FABRICATOR),
-				"&bDusts Fabricator &7- &eII",
+				"&b粉尘塑形机 &7- &eII",
 				"",
 				LoreBuilder.machine(MachineTier.BASIC, MachineType.MACHINE),
 				LoreBuilder.speed(1),
@@ -180,7 +182,7 @@ public class EndrexItems {
 				.registerChain(plugin);
 	}
 	private static void initResources(Endrex plugin) {
-		ENDER_PEARL_ORE = new EndrexResourceItem(plugin, new SlimefunItemStack("ENDER_PEARL_ORE", PlayerHead.getItemStack(EndrexSkulls.PEARL_ORE), "&f安德珍珠矿", "", "&7把他扔掉怎么样?"), 4, 19)
+		ENDER_PEARL_ORE = new EndrexResourceItem(plugin, new SlimefunItemStack("ENDER_PEARL_ORE", PlayerHead.getItemStack(EndrexSkulls.PEARL_ORE), "&f末影矿", "", "&7把它丢出去如何?"), 4, 19)
 				.addMachineRecipe((RecipeDisplayItem) RecipeType.ORE_CRUSHER.getMachine(), new ItemStack(Material.ENDER_PEARL, 4))
 				.itemUseHandler((e) -> {
 					e.getPlayer().launchProjectile(EnderPearl.class);
@@ -188,59 +190,59 @@ public class EndrexItems {
 					InventoryUtils.consumeHand(e.getPlayer().getInventory(), e.getInteractEvent().getHand(), 1);
 				})
 				.registerChain(plugin);
-		CHORUS_ORE = new EndrexResourceItem(plugin, new SlimefunItemStack("CHORUS_ORE", PlayerHead.getItemStack(EndrexSkulls.CHORUS_ORE), "&f合唱团矿石", "", "&7即使是“合唱”，也不是", "&7意思是你可以吃."), 7, 23)
+		CHORUS_ORE = new EndrexResourceItem(plugin, new SlimefunItemStack("CHORUS_ORE", PlayerHead.getItemStack(EndrexSkulls.CHORUS_ORE), "&f紫颂矿", "", "&7它的价值是否仅在于瞬移?", "&7或者只是为了好吃?"), 7, 23)
 				.addMachineRecipe((RecipeDisplayItem) RecipeType.ORE_CRUSHER.getMachine(), new ItemStack(Material.CHORUS_FRUIT, 4))
 				.registerChain(plugin);
 		
 		// Overworld resources
-		END_STONE_COAL_ORE = new EndrexResourceItem(plugin, new SlimefunItemStack("END_STONE_COAL_ORE", PlayerHead.getItemStack(EndrexSkulls.COAL_ORE), "&f含端石的煤矿石", "", "&7为什么会这样", "&7是否存在？"), 9, 27)
+		END_STONE_COAL_ORE = new EndrexResourceItem(plugin, new SlimefunItemStack("END_STONE_COAL_ORE", PlayerHead.getItemStack(EndrexSkulls.COAL_ORE), "&f末地煤矿", "", "&7为什么会这样呢?", "&7它是否真的存在?"), 9, 27)
 				.addMachineRecipe((RecipeDisplayItem) RecipeType.ORE_CRUSHER.getMachine(), new ItemStack(Material.COAL, 3))
 				.registerChain(plugin);
-		END_STONE_IRON_ORE = new EndrexResourceItem(plugin, new SlimefunItemStack("END_STONE_IRON_ORE", PlayerHead.getItemStack(EndrexSkulls.IRON_ORE), "&f含端石铁矿石", "", "&7为什么会这样", "&7是否存在?"), 8, 25)
+		END_STONE_IRON_ORE = new EndrexResourceItem(plugin, new SlimefunItemStack("END_STONE_IRON_ORE", PlayerHead.getItemStack(EndrexSkulls.IRON_ORE), "&f末地铁矿", "", "&7为什么会这样呢?", "&7它是否真的存在?"), 8, 25)
 				.addMachineRecipe((RecipeDisplayItem) RecipeType.ORE_CRUSHER.getMachine(), new CustomItemStack(SlimefunItems.IRON_DUST, 3))
 				.registerChain(plugin);
-		END_STONE_LAPIS_ORE = new EndrexResourceItem(plugin, new SlimefunItemStack("END_STONE_LAPIS_ORE", PlayerHead.getItemStack(EndrexSkulls.LAPIS_ORE), "&f含端石的青金石矿石", "", "&为什么会这样", "&7是否存在?"), 5, 12)
+		END_STONE_LAPIS_ORE = new EndrexResourceItem(plugin, new SlimefunItemStack("END_STONE_LAPIS_ORE", PlayerHead.getItemStack(EndrexSkulls.LAPIS_ORE), "&f末地青金石矿", "", "&7为什么会这样呢?", "&7它是否真的存在?"), 5, 12)
 				.addMachineRecipe((RecipeDisplayItem) RecipeType.ORE_CRUSHER.getMachine(), new ItemStack(Material.LAPIS_LAZULI, 14))
 				.registerChain(plugin);
-		END_STONE_REDSTONE_ORE = new EndrexResourceItem(plugin, new SlimefunItemStack("END_STONE_REDSTONE_ORE", PlayerHead.getItemStack(EndrexSkulls.REDSTONE_ORE), "&f红石矿含端石", "", "&7为什么会这样", "&7是否存在?"), 5, 12)
+		END_STONE_REDSTONE_ORE = new EndrexResourceItem(plugin, new SlimefunItemStack("END_STONE_REDSTONE_ORE", PlayerHead.getItemStack(EndrexSkulls.REDSTONE_ORE), "&f末地红石矿", "", "&7为什么会这样呢?", "&7它是否真的存在?"), 5, 12)
 				.addMachineRecipe((RecipeDisplayItem) RecipeType.ORE_CRUSHER.getMachine(), new ItemStack(Material.REDSTONE, 8))
 				.registerChain(plugin);
-		END_STONE_GOLD_ORE = new EndrexResourceItem(plugin, new SlimefunItemStack("END_STONE_GOLD_ORE", PlayerHead.getItemStack(EndrexSkulls.GOLD_ORE), "&f含端石金矿", "", "&7为什么会这样", "&7是否存在?"), 0, 5)
+		END_STONE_GOLD_ORE = new EndrexResourceItem(plugin, new SlimefunItemStack("END_STONE_GOLD_ORE", PlayerHead.getItemStack(EndrexSkulls.GOLD_ORE), "&f末地金矿", "", "&7为什么会这样呢?", "&7它是否真的存在?"), 0, 5)
 				.addMachineRecipe((RecipeDisplayItem) RecipeType.ORE_CRUSHER.getMachine(), new CustomItemStack(SlimefunItems.GOLD_DUST, 2))
 				.registerChain(plugin);
 		
-		RESONANT_ENDER_BUCKET = new LiquidBucket(CATEGORY_RESOURCES, new SlimefunItemStack("RESONANT_ENDER_BUCKET", PlayerHead.getItemStack(EndrexSkulls.RESONANT_ENDER_BUCKET), "&b共振水桶 ", "", "&7不，你不能倒液体", "&线 :(")).registerChain(plugin);
-		RESONANT_ENDER_DUST = new EndrexItem(CATEGORY_RESOURCES, new SlimefunItemStack("RESONANT_ENDER_DUST", Material.CYAN_DYE, "&b共振Ender粉尘"), EndrexRecipeType.DUSTS_FABRICATOR, new ItemStack[0]).registerChain(plugin);
-		ENDERIUM = new EndrexItem(CATEGORY_RESOURCES, new SlimefunItemStack("ENDERIUM", Material.LIGHT_BLUE_DYE, "&bEnderium"), RecipeType.SMELTERY, new ItemStack[] {
+		RESONANT_ENDER_BUCKET = new LiquidBucket(CATEGORY_RESOURCES, new SlimefunItemStack("RESONANT_ENDER_BUCKET", PlayerHead.getItemStack(EndrexSkulls.RESONANT_ENDER_BUCKET), "&b末影液桶", "", "&7不，你不能倾倒该液体", "&:(")).registerChain(plugin);
+		RESONANT_ENDER_DUST = new EndrexItem(CATEGORY_RESOURCES, new SlimefunItemStack("RESONANT_ENDER_DUST", Material.CYAN_DYE, "&b末影粉"), EndrexRecipeType.DUSTS_FABRICATOR, new ItemStack[0]).registerChain(plugin);
+		ENDERIUM = new EndrexItem(CATEGORY_RESOURCES, new SlimefunItemStack("ENDERIUM", Material.LIGHT_BLUE_DYE, "&b末影合金"), RecipeType.SMELTERY, new ItemStack[] {
 				SlimefunItems.ALUMINUM_DUST, SlimefunItems.ALUMINUM_DUST, SlimefunItems.ALUMINUM_DUST, SlimefunItems.SILVER_DUST, SlimefunItems.SILVER_DUST, SlimefunItems.COPPER_DUST, RESONANT_ENDER_DUST.getItem(), RESONANT_ENDER_DUST.getItem(), null
 		}).registerChain(plugin);
-		ENDERIUM_BLOCK = new EndrexItem(CATEGORY_RESOURCES, new SlimefunItemStack("ENDERIUM_BLOCK", Material.LIGHT_BLUE_CONCRETE, "&bEnderium块"), RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
+		ENDERIUM_BLOCK = new EndrexItem(CATEGORY_RESOURCES, new SlimefunItemStack("ENDERIUM_BLOCK", Material.LIGHT_BLUE_CONCRETE, "&b末影合金块"), RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
 				ENDERIUM.getItem(), ENDERIUM.getItem(), ENDERIUM.getItem(),
 				ENDERIUM.getItem(), ENDERIUM.getItem(), ENDERIUM.getItem(),
 				ENDERIUM.getItem(), ENDERIUM.getItem(), ENDERIUM.getItem()
 		}).registerChain(plugin);
-		DRAGON_SCALE = new EndrexItem(CATEGORY_RESOURCES, new SlimefunItemStack("DRAGON_SCALE", Material.BLACK_DYE, "&e龙鳞", "", "&7按F键选择Ender龙鳞"), EndrexRecipeType.KILL_ENDER_DRAGON, new ItemStack[0]).registerChain(plugin);
-		REINFORCED_DRAGON_SCALE = new EndrexItem(CATEGORY_RESOURCES, (SlimefunItemStack) new ItemStackWrapper(new SlimefunItemStack("REINFORCED_DRAGON_SCALE", Material.BLACK_DYE, "&e强化龙鳞", "", "&7现在比以前更难了")).addEnchant(Enchantment.DURABILITY, 0).addFlag(ItemFlag.HIDE_ENCHANTS).getItem(), RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
+		DRAGON_SCALE = new EndrexItem(CATEGORY_RESOURCES, new SlimefunItemStack("DRAGON_SCALE", Material.BLACK_DYE, "&e龙鳞", "", "&7按F键骑龙:)"), EndrexRecipeType.KILL_ENDER_DRAGON, new ItemStack[0]).registerChain(plugin);
+		REINFORCED_DRAGON_SCALE = new EndrexItem(CATEGORY_RESOURCES, (SlimefunItemStack) new ItemStackWrapper(new SlimefunItemStack("REINFORCED_DRAGON_SCALE", Material.BLACK_DYE, "&e强化龙鳞", "", "&7更难获取了...")).addEnchant(Enchantment.DURABILITY, 0).addFlag(ItemFlag.HIDE_ENCHANTS).getItem(), RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
 				ENDERIUM_BLOCK.getItem(), ENDERIUM_BLOCK.getItem(), ENDERIUM_BLOCK.getItem(),
 				DRAGON_SCALE.getItem(), DRAGON_SCALE.getItem(), DRAGON_SCALE.getItem(),
 				SlimefunItems.REINFORCED_PLATE, SlimefunItems.REINFORCED_PLATE, SlimefunItems.REINFORCED_PLATE
 		}).registerChain(plugin);
 		{
-			SlimefunItemStack oreblock = new SlimefunItemStack("MYSTHERIUM_ORE", Material.PURPLE_CONCRETE, "&5神秘矿石", "", "&7非常神秘的块");
-			MYSTHERIUM = new EndrexItem(CATEGORY_RESOURCES, new SlimefunItemStack("MYSTHERIUM", Material.PURPLE_DYE, "&5神秘的事物", "", "&7Very mysterious thing"), RecipeType.ORE_CRUSHER, new ItemStack[] {oreblock, null, null, null, null, null, null, null, null}).registerChain(plugin);
+			SlimefunItemStack oreblock = new SlimefunItemStack("MYSTHERIUM_ORE", Material.PURPLE_CONCRETE, "&5神秘矿", "", "&7它蕴含在无边的末地之中");
+			MYSTHERIUM = new EndrexItem(CATEGORY_RESOURCES, new SlimefunItemStack("MYSTHERIUM", Material.PURPLE_DYE, "&5神秘凝胶", "", "&7它实在是太稀有了"), RecipeType.ORE_CRUSHER, new ItemStack[] {oreblock, null, null, null, null, null, null, null, null}).registerChain(plugin);
 			MYSTHERIUM_ORE = new EndrexMineableResource(CATEGORY_RESOURCES, oreblock, 0.09, MYSTHERIUM.getItem()).registerChain(plugin);
 		}
-		MYSTHERIUM_BUCKET = new LiquidBucket(CATEGORY_RESOURCES, new SlimefunItemStack("MYSTHERIUM_BUCKET", PlayerHead.getItemStack(EndrexSkulls.MYSTHERIUM_BUCKET), "&b神秘液体", "", "&7不，你不能倒液体", "&7yet :(")).registerChain(plugin);
+		MYSTHERIUM_BUCKET = new LiquidBucket(CATEGORY_RESOURCES, new SlimefunItemStack("MYSTHERIUM_BUCKET", PlayerHead.getItemStack(EndrexSkulls.MYSTHERIUM_BUCKET), "&b神秘液桶", "", "&7不，你不能倾倒液体", "&7:(")).registerChain(plugin);
 	}
 	private static void initWeapons(Endrex plugin) {
 		ENDERIUM_SWORD = new EndrexEquipment(CATEGORY_WEAPONS_AND_EQUIPMENTS, (SlimefunItemStack) new ItemStackWrapper(new SlimefunItemStack(
 				"ENDERIUM_SWORD",
 				Material.IRON_SWORD,
-				"&bEnderium剑",
-				"&7珍珠抢夺者I",
+				"&b末影合金剑",
+				"&7珍珠掠夺者 I",
 				"",
-				"&f有更高的机会获得",
-				"&fEnderman的珍珠"
+				"&f你将有更高的机率",
+				"&f从末影人身上获取末影珍珠"
 				))
 				.addEnchant(Enchantment.DAMAGE_ALL, 1)
 				.getItem(), RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
@@ -251,11 +253,11 @@ public class EndrexItems {
 		EMPOWERED_ENDERIUM_SWORD = new EndrexEquipment(CATEGORY_WEAPONS_AND_EQUIPMENTS, (SlimefunItemStack) new ItemStackWrapper(new SlimefunItemStack(
 				"EMPOWERED_ENDERIUM_SWORD",
 				Material.IRON_SWORD,
-				"&b赋能Enderium剑",
-				"&7珍珠抢夺者II",
+				"&b赋能末影合金剑",
+				"&7珍珠抢夺者 II",
 				"",
-				"&f有更高的机会",
-				"&fEnderman的珍珠"
+				"&f你将有更高的机率",
+				"&f从末影人身上获取末影珍珠"
 				))
 				.addEnchant(Enchantment.DAMAGE_ALL, 3)
 				.addEnchant(Enchantment.DURABILITY, 1)
@@ -268,11 +270,10 @@ public class EndrexItems {
 		MYSTERIOUS_SWORD = new MysteriousEquipment(CATEGORY_WEAPONS_AND_EQUIPMENTS, new SlimefunItemStack(
 				"MYSTERIOUS_SWORD",
 				Material.IRON_SWORD,
-				"&d神秘之剑",
+				"&d神秘剑",
 				EndrexLoreBuilder.CLICK_TO_UNLOCK,
 				"",
-				"&f获得随机附魔",
-				"&f每次你制作它."
+				"&f右击获得随机附魔"
 				), RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
 				null, MYSTHERIUM.getItem(), null,
 				null, MYSTHERIUM.getItem(), null,
@@ -294,11 +295,10 @@ public class EndrexItems {
 		MYSTERIOUS_PICKAXE = new MysteriousEquipment(CATEGORY_WEAPONS_AND_EQUIPMENTS, new SlimefunItemStack(
 				"MYSTERIOUS_PICKAXE",
 				Material.IRON_PICKAXE,
-				"&d神秘的鹤嘴锄",
+				"&d神秘镐",
 				EndrexLoreBuilder.CLICK_TO_UNLOCK,
 				"",
-				"&f获得随机附魔",
-				"&f每次你制作它."
+				"&f右击获得随机附魔"
 				), RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
 				MYSTHERIUM.getItem(), MYSTHERIUM.getItem(), MYSTHERIUM.getItem(),
 				null, new ItemStack(Material.STICK), null,
@@ -320,11 +320,10 @@ public class EndrexItems {
 		MYSTERIOUS_AXE = new MysteriousEquipment(CATEGORY_WEAPONS_AND_EQUIPMENTS, new SlimefunItemStack(
 				"MYSTERIOUS_AXE",
 				Material.IRON_AXE,
-				"&d神秘斧头",
+				"&d神秘斧",
 				EndrexLoreBuilder.CLICK_TO_UNLOCK,
 				"",
-				"&f获得随机附魔",
-				"&f每次你制作它."
+				"&f右击获得随机附魔"
 				), RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
 				MYSTHERIUM.getItem(), MYSTHERIUM.getItem(), null,
 				MYSTHERIUM.getItem(), new ItemStack(Material.STICK), null,
